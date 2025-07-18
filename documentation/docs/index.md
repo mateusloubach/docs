@@ -23,5 +23,6 @@ _Current build:_ `BUILD_SHA_HERE`
     update commit #2 - checked for continuous workflow, and redirection from last commit to new commit;
     update commit #2* - added versioning tab. worked perfectly! it also organized by oldest to newest
     update commit #4 - checking if max number of commits in tabs is 3.
-    update commit #5 - max # of displayed commits is 3. Confirmed issue that displayed only 3 items.
-    update commit #6 - changed version slug creation in ci
+    update commit #5* - max # of displayed commits is 3. Confirmed issue that displayed only 3 items.
+    update commit #6 - changed version slug creation in ci. worked perfectly!
+    update commit #7 - try git tag to update major, minor, or feature addition;
