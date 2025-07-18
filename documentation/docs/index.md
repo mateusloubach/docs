@@ -20,4 +20,4 @@ _Current build:_ `BUILD_SHA_HERE`
 
     init commit - worked as expected. created gh-pages, jumped mikeScripts, completed.
     update commit #1 - gh-pages redirection worked as expected. slug worked, but wrong format.
-    update commit #2 - 
+    update commit #2 - added versioning tab

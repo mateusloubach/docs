@@ -4,3 +4,7 @@ theme:
   palette:
     scheme: default
     primary: indigo
+
+extra:
+  version:
+    provider: mike
