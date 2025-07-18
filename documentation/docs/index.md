@@ -17,3 +17,6 @@ _Current build:_ `BUILD_SHA_HERE`
     docs/
         index.md  # The documentation homepage.
         ...       # Other markdown pages, images and other files.
+
+    init commit - worked as expected. created gh-pages, jumped mikeScripts, completed.
+    update commit #1 -
