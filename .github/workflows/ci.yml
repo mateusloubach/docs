@@ -116,18 +116,15 @@ jobs:
           COMMITS_SINCE=$(git rev-list ${LATEST_TAG}..HEAD --count 2>/dev/null || echo "1")
 
           if [ "$COMMITS_SINCE" -gt 0 ]; then
-            # Increment patch version for new commits
+            # Increment patch version for new commits (bug fixes)
             PATCH=$((PATCH + 1))
           fi
 
+          # Use clean semantic version without date suffix
           VERSION="v${MAJOR}.${MINOR}.${PATCH}"
 
-          # Create date-based pre-release identifier for uniqueness
-          DATE_SUFFIX=$(date --utc '+%Y%m%d-%H%M')
-          FULL_VERSION="${VERSION}-${DATE_SUFFIX}"
-
-          echo "VERSION=$FULL_VERSION" >> $GITHUB_ENV
-          echo "VERSION_LABEL=📝 $FULL_VERSION" >> $GITHUB_ENV
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "VERSION_LABEL= $VERSION" >> $GITHUB_ENV
 
       # ————— Deploy docs with Mike using custom slug & title —————
       - name: Deploy docs with Mike
