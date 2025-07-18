@@ -101,45 +101,29 @@ jobs:
           echo "COUNT=$COUNT" >> $GITHUB_ENV
 
       # ————— Compute version identifiers —————
-      - name: Determine version from tags
+      - name: Determine version from Mike versions
         if: env.EXISTS == 'true'
         run: |
-          # Debug: Show current state
-          echo "=== DEBUG INFO ==="
-          echo "Current HEAD: $(git rev-parse HEAD)"
-          echo "Current HEAD short: $(git rev-parse --short HEAD)"
-          echo "Tags on current commit: $(git tag --points-at HEAD || echo 'none')"
-          echo "Latest tag: $(git describe --tags --match 'v*' --abbrev=0 2>/dev/null || echo 'v0.0.0')"
-          echo "=================="
+          # Get the latest version from Mike (not git tags)
+          LATEST_VERSION=$(mike list --branch gh-pages 2>/dev/null | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+' | head -1 | cut -d' ' -f1 || echo "v0.1.0")
           
-          # Check if current commit has a tag first
-          CURRENT_TAG=$(git describe --tags --exact-match HEAD 2>/dev/null || echo "")
+          echo "Latest Mike version: $LATEST_VERSION"
           
-          if [ -n "$CURRENT_TAG" ]; then
-            # Current commit is tagged - use that exact tag
-            VERSION="$CURRENT_TAG"
-            echo "Using exact tag: $VERSION"
-          else
-            # No tag on current commit - increment from latest tag
-            LATEST_TAG=$(git describe --tags --match "v*" --abbrev=0 2>/dev/null || echo "v0.0.0")
-            
-            # Extract version numbers
-            MAJOR=$(echo $LATEST_TAG | sed 's/v\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\).*/\1/')
-            MINOR=$(echo $LATEST_TAG | sed 's/v\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\).*/\2/')
-            PATCH=$(echo $LATEST_TAG | sed 's/v\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\).*/\3/')
-            
-            echo "Parsed version: MAJOR=$MAJOR, MINOR=$MINOR, PATCH=$PATCH"
-            
-            # Always increment patch for documentation changes
-            PATCH=$((PATCH + 1))
-            VERSION="v${MAJOR}.${MINOR}.${PATCH}"
-            echo "Incremented version: $VERSION"
-          fi
-
-          echo "Final VERSION: $VERSION"
+          # Extract and increment patch
+          MAJOR=$(echo $LATEST_VERSION | sed 's/v\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\).*/\1/')
+          MINOR=$(echo $LATEST_VERSION | sed 's/v\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\).*/\2/')
+          PATCH=$(echo $LATEST_VERSION | sed 's/v\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\).*/\3/')
+          
+          echo "Parsed: MAJOR=$MAJOR, MINOR=$MINOR, PATCH=$PATCH"
+          
+          # Increment patch for new documentation changes
+          PATCH=$((PATCH + 1))
+          VERSION="v${MAJOR}.${MINOR}.${PATCH}"
+          
+          echo "New version: $VERSION"
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "VERSION_LABEL=$VERSION" >> $GITHUB_ENV
-
+          
       # ————— Deploy docs with Mike using custom slug & title —————
       - name: Deploy docs with Mike
         if: env.EXISTS == 'true'
