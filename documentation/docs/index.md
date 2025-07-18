@@ -37,4 +37,6 @@ _Current build:_ `BUILD_SHA_HERE`
     update commit #16 - trying new logic. - worked. updated verson with git tag
     update commit #17 - see if new version applied normal commits. broke.
     update commit #18 - try git tag to see if it works. git tag works.
-    update commit #19 - final test after git tag.
+    update commit #19 - final test after git tag. worked beautifully!
+    update commit #20 - final test after normal commit.
+    
