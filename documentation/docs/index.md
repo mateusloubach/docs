@@ -34,3 +34,4 @@ _Current build:_ `BUILD_SHA_HERE`
     update commit #13 - going to try new tag with v0.2.0. did not work. broke logic.
     update commit #14 - applied new logic for version deployment. ok. back on track!
     update commit #15 - now am going to try to apply git tag.
+    update commit #16 - trying new logic.
