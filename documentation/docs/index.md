@@ -25,4 +25,5 @@ _Current build:_ `BUILD_SHA_HERE`
     update commit #4 - checking if max number of commits in tabs is 3.
     update commit #5* - max # of displayed commits is 3. Confirmed issue that displayed only 3 items.
     update commit #6 - changed version slug creation in ci. worked perfectly!
-    update commit #7 - try git tag to update major, minor, or feature addition;
+    update commit #7 - try git tag to update major, minor, or feature addition; tag went, but wasn't added to version;
+    update commit #8 - checking if tag applies on next commit
