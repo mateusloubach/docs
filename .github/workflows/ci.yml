@@ -124,7 +124,7 @@ jobs:
           VERSION="v${MAJOR}.${MINOR}.${PATCH}"
 
           echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo "VERSION_LABEL= $VERSION" >> $GITHUB_ENV
+          echo "VERSION_LABEL=$VERSION" >> $GITHUB_ENV
 
       # ————— Deploy docs with Mike using custom slug & title —————
       - name: Deploy docs with Mike
