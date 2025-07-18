@@ -31,3 +31,4 @@ _Current build:_ `BUILD_SHA_HERE`
     update commit #10 - recognized error in ci, fixed space. checking if worked. It didn't! - changed ci for correct results.
     update commit #11 - changed ci. expecting updated version. didn't work. changed the "determine version from tags"
     update commit #12 - last try.
+    update commit #13 - going to try new tag with v0.2.0.
