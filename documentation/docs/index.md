@@ -28,4 +28,5 @@ _Current build:_ `BUILD_SHA_HERE`
     update commit #7 - try git tag to update major, minor, or feature addition; tag went, but wasn't added to version;
     update commit #8 - checking if tag applies on next commit. it applied, but slug is displaying the first format of verions;
     update commit #9 - going to see if commits follow new rule; commits followed new rule. - although I lose commit `8ba73bc`
-    update commit #10 - recognized error in ci, fixed space. checking if worked
+    update commit #10 - recognized error in ci, fixed space. checking if worked. It didn't! - changed ci for correct results.
+    update commit #11 - changed ci. expecting updated version.
